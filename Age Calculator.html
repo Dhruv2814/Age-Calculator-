@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Age Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            margin: 50px auto;
+            max-width: 300px;
+        }
+        input[type="date"], button {
+            display: block;
+            margin: 10px auto;
+        }
+        #result {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Age Calculator</h1>
+        <label for="dob">Enter Your Date of Birth:</label>
+        <input type="date" id="dob">
+        <button onclick="calculateAge()">Calculate Age</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function calculateAge() {
+            const dob = new Date(document.getElementById("dob").value);
+            const currentDate = new Date();
+
+            const ageInMilliseconds = currentDate - dob;
+            const ageInYears = ageInMilliseconds / (1000 * 60 * 60 * 24 * 365.25);
+
+            const years = Math.floor(ageInYears);
+            const months = Math.floor((ageInYears - years) * 12);
+            const days = Math.floor((ageInYears - years - (months / 12)) * 365.25);
+
+            document.getElementById("result").innerHTML = `Your Age: ${years} years, ${months} months, ${days} days`;
+        }
+    </script>
+</body>
+</html>
